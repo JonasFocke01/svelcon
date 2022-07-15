@@ -9,7 +9,8 @@
     "build": "env-cmd svelte-kit build",
     "preview": "env-cmd svelte-kit preview",
     "test:once": "jest src --coverage --collectCoverageFrom=src/lib/**/*.svelte --silent",
-    "test": "jest src --watch --only-changed --silent"
+    "test": "jest src --watch --only-changed --silent",
+    "bump": "npm version --no-git-tag-version patch"
   },
   "setupFilesAfterEnv": [
     "@testing-library/jest-dom/extend-expect"
