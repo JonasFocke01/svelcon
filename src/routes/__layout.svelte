@@ -5,4 +5,6 @@
 
 <SvelteToast />
 
-<slot />
+<div class="bg-primary min-h-screen">
+  <slot />
+</div>
