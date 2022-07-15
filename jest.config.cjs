@@ -13,6 +13,7 @@ module.exports = {
   moduleNameMapper: {
     '^\\$lib(.*)$': '<rootDir>/src/lib$1'
   },
+  modulePathIgnorePatterns: ['package'],
   automock: false,
   setupFiles: ['./setupJest.js'],
   testTimeout: 60000
