@@ -11,7 +11,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/checkout@v2.1.1
-      - name: bump version
       - run: |
           npm run bump
           git config --global user.name "github-actions[bot]"
