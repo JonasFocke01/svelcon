@@ -1,19 +1,23 @@
 name: 'publish'
 
 on:
-  publish:
+  push:
     branches:
       - master
 
 jobs:
-  publish:
+  resease:
+    name: publish
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: checkout
+        uses: actions/checkout@v2.1.1
+      - name: node
+        uses: actions/setup-node@v1.4.2
         with:
           node-version: 16
-      - run: npm install
-      - uses: JS-DevTools/npm-publish@v1
-        with:
-          token: ${{ secrets.NPM_AUTH_TOKEN }}
+          registry-url: https://registry.npmjs.org
+      - name: publish
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
