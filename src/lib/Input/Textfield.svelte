@@ -40,6 +40,16 @@
   * HTML
   * default: no default
   * adds the content above the input field and disposes a boolean if the user is to be warned.
+
+  **on:change**
+  * function
+  * default: () => {}
+  * triggered when the value of the field changes.
+
+  **on:input**
+  * function
+  * default: () => {}
+  * triggered when the user inputs something.
  -->
 <script lang="ts">
   import { onMount } from 'svelte';
@@ -50,6 +60,7 @@
   export let value = '';
   export let paddingleft = false;
   export let disabled = false;
+  export let maxLength = 255;
 
   let warnUser = false;
 
@@ -82,9 +93,11 @@
 			{paddingleft ? 'pl-10' : null}
 			
 		"
+    maxlength={maxLength}
     {placeholder}
     bind:value
     on:change
+    on:input
     {disabled}
   />
 </label>
