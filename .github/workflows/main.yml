@@ -12,11 +12,8 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2.1.1
-      - name: node
-        uses: actions/setup-node@v1.4.2
-        with:
-          node-version: 16.15.0
-          registry-url: https://registry.npmjs.org
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3.4.1
       - name: publish
         run: npm publish --access public
         env:
