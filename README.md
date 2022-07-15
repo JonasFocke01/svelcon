@@ -31,3 +31,4 @@ All conponents are styled and will inherit your website sceme.
 Your `tailwind.config.cjs` file should look like this:
 
 `/** @type {import('tailwindcss').Config} */ module.exports = { content: [ './src/**/*.{html,js,svelte,ts}', './node_modules/@jonas_focke/**/*.{html,js,svelte,ts}' ], theme: { colors: { primary: '#0044ae', secondary: '#02adff', accent: '#ff8c00', success: '#4dea3f', warning: '#f4bb50', error: '#f74838', info: '#62acfc', surface: '#006bc6', text: '#ffffff', black: '#000000' }, extend: { fontFamily: { robotoslab: ['Roboto Slab', 'serif-serif'], kouhlen: ['Koulen', 'serif-serif'], lato: ['Lato', 'sans-serif'] } } }, plugins: [] }; `
+asdffdas
