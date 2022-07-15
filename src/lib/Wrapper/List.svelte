@@ -170,7 +170,11 @@
               <Text text={`>${item.value}`} />
             </div>
           {:else}
-            <Checkbox bind:checked={item.selected} label="" />
+            <Checkbox
+              bind:checked={item.selected}
+              label=""
+              disabled={selectable}
+            />
           {/if}
         </li>
       {/each}
