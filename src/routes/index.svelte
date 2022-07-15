@@ -3,11 +3,10 @@
   import Checkbox from '$lib/Input/Checkbox.svelte';
   import Date from '$lib/Input/Date.svelte';
   import Dropdown from '$lib/Input/Dropdown.svelte';
-  import NormalButton from '$lib/Input/NormalButton.svelte';
+  import Button from '$lib/Input/Button.svelte';
   import Number from '$lib/Input/Number.svelte';
   import Password from '$lib/Input/Password.svelte';
   import RadioGroup from '$lib/Input/RadioGroup.svelte';
-  import SmallButton from '$lib/Input/SmallButton.svelte';
   import Textarea from '$lib/Input/Textarea.svelte';
   import Textfield from '$lib/Input/Textfield.svelte';
   import Card from '$lib/Wrapper/Card.svelte';

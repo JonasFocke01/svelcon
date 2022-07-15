@@ -49,7 +49,7 @@
   * if true, a filterbox will appear
 -->
 <script lang="ts">
-  import SmallButton from '$lib/Input/SmallButton.svelte';
+  import Button from '$lib/Input/Button.svelte';
   import Textfield from '$lib/Input/Textfield.svelte';
   import Card from './Card.svelte';
   import Text from './Text.svelte';
@@ -136,9 +136,10 @@
             {/each}
             {#each displayRowButtons as button}
               <td>
-                <SmallButton
+                <Button
+                  size="small"
                   on:click={() => button.onClick(row)}
-                  label={button.text}
+                  text={{ text: button.text }}
                 />
               </td>
             {/each}

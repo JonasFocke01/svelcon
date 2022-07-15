@@ -10,8 +10,7 @@ The components are scructured in Folders to organize them
   - Checkbox
   - Date
   - Dropown
-  - NormalButton
-  - SmallButton
+  - Button
   - Password
   - RadioGroup
   - Textarea

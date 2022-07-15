@@ -76,7 +76,7 @@
 -->
 <script lang="ts">
   import Checkbox from '$lib/Input/Checkbox.svelte';
-  import Button from '$lib/Input/NormalButton.svelte';
+  import Button from '$lib/Input/Button.svelte';
   import Textfield from '$lib/Input/Textfield.svelte';
   import Card from '$lib/Wrapper/Card.svelte';
   import { createEventDispatcher, onMount } from 'svelte/internal';
@@ -179,7 +179,7 @@
   {#if button}
     <div class="mt-4">
       <Button
-        label={buttontext}
+        text={{ text: buttontext }}
         on:click={() => {
           eventDispatcher('buttonClicked');
         }}
