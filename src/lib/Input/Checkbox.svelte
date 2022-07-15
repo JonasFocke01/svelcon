@@ -15,10 +15,16 @@ display a basic checkbox
 * function
 * default: () => {}
 * triggered when the checkbox is checked or unchecked.
+
+**disabled**
+* boolean
+* default: false
+* if true, the checkbox is disabled.
  -->
 <script lang="ts">
   export let label: string = 'Label';
   export let checked: boolean = false;
+  export let disabled: boolean = false;
 </script>
 
 <label
@@ -29,6 +35,7 @@ display a basic checkbox
     class="form-check-input h-4 w-4, rounded-sm bg-secondary checked:bg-accent focus:outline-none transition duration-200 my-1 align-top bg-no-repeat bg-center bg-contain float-left cursor-pointer"
     bind:checked
     on:change
+    {disabled}
   />
   <span class="ml-2">{label}</span>
 </label>
