@@ -28,8 +28,6 @@ jobs:
       - name: publish
         run: |
           npx svelte-kit package
-          rm -rf .git/hooks
-          cd package
           echo "//registry.npmjs.org/:_authToken=${{secrets.NPM_AUTH_TOKEN}}" > ~/.npmrc
           npm publish --access public
         env:
