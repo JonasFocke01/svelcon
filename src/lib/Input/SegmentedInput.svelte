@@ -32,17 +32,19 @@
 </script>
 
 {#if segmentArray}
-  {#each segmentArray as segment}
-    <div in:scale class="w-8 flex flex-row ml-1 focus:border-surface">
-      <Textfield
-        bind:this={segment.element}
-        placeholder="*"
-        maxLength={1}
-        on:input={(e) => {
-          //@ts-ignore
-          input(segment.id, e);
-        }}
-      />
-    </div>
-  {/each}
+  <div class="flex flex-row">
+    {#each segmentArray as segment}
+      <div in:scale class="w-8 ml-1 focus:border-surface">
+        <Textfield
+          bind:this={segment.element}
+          placeholder="*"
+          maxLength={1}
+          on:input={(e) => {
+            //@ts-ignore
+            input(segment.id, e);
+          }}
+        />
+      </div>
+    {/each}
+  </div>
 {/if}

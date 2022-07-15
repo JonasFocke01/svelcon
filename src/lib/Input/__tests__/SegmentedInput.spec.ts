@@ -51,7 +51,7 @@ it('fires Change Event', async () => {
   expect(mock).toHaveBeenCalled();
 
   await waitFor(() => {
-    expect(getAllByPlaceholderText('*')[0].closest('.flex')).toHaveClass(
+    expect(getAllByPlaceholderText('*')[0].closest('.w-8')).toHaveClass(
       'focus:border-surface'
     );
   });
