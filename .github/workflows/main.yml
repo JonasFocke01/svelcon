@@ -29,6 +29,6 @@ jobs:
         run: |
           npx svelte-kit package
           echo "//registry.npmjs.org/:_authToken=${{secrets.NPM_AUTH_TOKEN}}" > ~/.npmrc
-          yarn publish --access public
+          yarn publish package --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
