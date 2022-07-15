@@ -16,7 +16,7 @@
     "@testing-library/jest-dom/extend-expect"
   ],
   "exports": {
-    ".": "./src/index.js",
+    ".": "./src/routes/index.svelte",
     "./Checkbox": "./Checkbox.svelte",
     "./Date": "./Date.svelte",
     "./Dropdown": "./Dropdown.svelte",
