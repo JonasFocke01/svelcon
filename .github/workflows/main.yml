@@ -6,29 +6,13 @@ on:
       - master
 
 jobs:
-  resease:
-    name: publish
+  publish:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
-        uses: actions/checkout@v2.1.1
-      - name: bump version
-        run: |
-          npm run bump
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git add -A
-          git commit -m "version bump"
-          git push
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v3.4.1
+      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2.1.1
+      - run: npm install
+      - run: npx svelte-kit package
+      - uses: JS-DevTools/npm-publish@v1
         with:
-          always-auth: true
-      - name: publish
-        run: |
-          npx svelte-kit package
-          echo "//registry.npmjs.org/:_authToken=${{secrets.NPM_AUTH_TOKEN}}" > ~/.npmrc
-          yarn publish /package/ --access public
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+          token: ${{ secrets.NPM_AUTH_TOKEN }}
