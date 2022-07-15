@@ -1,6 +1,6 @@
 {
   "name": "@jonas_focke/svelcon",
-  "version": "0.2.23",
+  "version": "0.2.24",
   "custom": {
     "node-version": "16.15.0"
   },
