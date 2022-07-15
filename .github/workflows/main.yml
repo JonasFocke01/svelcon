@@ -20,7 +20,6 @@ jobs:
           git push
       - run: npm install
       - run: npx svelte-kit package
-      - run: cd package
       - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
