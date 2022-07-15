@@ -50,6 +50,10 @@
   * function
   * default: () => {}
   * triggered when the user inputs something.
+
+  **method: focusThis**
+  * function
+  * focuses and selects everything in the input field.
  -->
 <script lang="ts">
   import { onMount } from 'svelte';
@@ -74,6 +78,11 @@
       );
     }
   });
+  let thisInput;
+  export function focusThis() {
+    thisInput.focus();
+    thisInput.select();
+  }
 </script>
 
 <label class="block text-xl font-bold">
@@ -87,6 +96,7 @@
     <slot {warnUser} />
   </span>
   <input
+    bind:this={thisInput}
     type="text"
     class="block w-full rounded-md pl-3 pt-1 pb-1 text-black
 			{warnUser ? 'bg-warning' : null} 
