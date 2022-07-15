@@ -26,7 +26,7 @@ display a basic radio group
   import Text from '$lib/Wrapper/Text.svelte';
 
   let eventDispatcher = createEventDispatcher();
-  export let label: string;
+  export let label: string = '';
 
   export let items: Array<string> = [];
   export let chosenItem: string = 'none';
