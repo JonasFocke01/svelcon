@@ -16,6 +16,7 @@ The components are scructured in Folders to organize them
   - RadioGroup
   - Textarea
   - Textfield
+  - SegmentedInput
 - Wrapper
   - Card
   - InplacePopup

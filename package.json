@@ -31,7 +31,8 @@
     "./List": "./List.svelte",
     "./MediaQuery": "./MediaQuery.svelte",
     "./Table": "./Table.svelte",
-    "./Text": "./Text.svelte"
+    "./Text": "./Text.svelte",
+    "./SegmentedInput": "./SegmentedInput.svelte"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "^1.0.0-next.54",
