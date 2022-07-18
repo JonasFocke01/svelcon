@@ -9,6 +9,7 @@
   * \_underline\_
   * \#italic\#
   * \-strikeTrhough\-
+  * ! ignore next char
   * eg.: '\*Hello \_World\_\* \#This \_is \#is an\_ \-example\-\#'
   
   **text**
@@ -81,16 +82,19 @@
     let nextStrikeThrough = false;
     let nextUnderline = false;
     let word: string = '';
+    let ignore = false;
 
     tokenStack = text.split('');
     for (let i = 0; i < tokenStack.length; i++) {
-      if (tokenStack[i] === '*') {
+      if (!ignore && tokenStack[i] === '!') {
+        ignore = true;
+      } else if (!ignore && tokenStack[i] === '*') {
         nextBold = !nextBold;
-      } else if (tokenStack[i] === '_') {
+      } else if (!ignore && tokenStack[i] === '_') {
         nextUnderline = !nextUnderline;
-      } else if (tokenStack[i] === '-') {
+      } else if (!ignore && tokenStack[i] === '-') {
         nextStrikeThrough = !nextStrikeThrough;
-      } else if (tokenStack[i] === '#') {
+      } else if (!ignore && tokenStack[i] === '#') {
         nextItalic = !nextItalic;
       } else {
         letters.push({
@@ -100,6 +104,7 @@
           strikeThrough: nextStrikeThrough,
           underline: nextUnderline
         });
+        ignore = false;
       }
     }
     letters = letters.map((letter) =>
