@@ -70,10 +70,12 @@
     class:text-xl={size === 'medium'}
     class:text-sm={size === 'small'}
   >
-    <Text
-      text={text.text}
-      textcolor={text.color}
-      typewriter={text.typewriter}
-    />
+    <div class="flex flex-row justify-center">
+      <Text
+        text={text.text}
+        textcolor={text.color}
+        typewriter={text.typewriter}
+      />
+    </div>
   </button>
 </label>
