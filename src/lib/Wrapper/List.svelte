@@ -84,7 +84,7 @@
 
   let eventDispatcher = createEventDispatcher();
 
-  let filter: string;
+  let filter: string = '';
 
   export let text: string = '';
   export let showCheckbox: boolean = false;
@@ -104,6 +104,7 @@
 
   function selectItem(item: Item) {
     if (selectable) {
+      eventDispatcher('itemSelected', item);
       if (!multiselect) {
         itemlistToBind.forEach((i) => {
           i.selected = i.text === item.text;
@@ -120,7 +121,7 @@
       ? inputItemsString.forEach((i) => {
           itemlistToBind = [
             ...itemlistToBind,
-            { text: i, value: i, selected: false }
+            { text: i, value: '', selected: false }
           ];
         })
       : null;
@@ -148,7 +149,6 @@
   </div>
   <ul>
     {#if itemlistToBind && itemlistToBind.length}
-      <!-- {#if filter} -->
       {#each filter.length > 0 ? itemlistToBind.filter((e) => e.text
                 .toLowerCase()
                 .indexOf(filter.toLowerCase()) > -1) : itemlistToBind as item}
@@ -168,11 +168,7 @@
               <Text text={`>${item.value}`} />
             </div>
           {:else}
-            <Checkbox
-              bind:checked={item.selected}
-              label=""
-              disabled={selectable}
-            />
+            <Checkbox bind:checked={item.selected} label="" />
           {/if}
         </li>
       {/each}

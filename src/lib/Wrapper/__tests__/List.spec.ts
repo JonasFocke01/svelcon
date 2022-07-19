@@ -60,7 +60,7 @@ it('renders with keyValue list', async () => {
   );
 });
 
-it('renders renders with string list', async () => {
+it('renders with string list', async () => {
   const { getByText, getByPlaceholderText } = render(List, {
     props: {
       text: 'Testinglist',
@@ -74,11 +74,7 @@ it('renders renders with string list', async () => {
   });
 
   expect(getByText('Testinglist')).toBeInTheDocument();
-  expect(getByText('item1', { exact: false })).toBeInTheDocument();
-  expect(getByText('item2', { exact: false })).toBeInTheDocument();
-  expect(getByText('item3', { exact: false })).toBeInTheDocument();
-  expect(getByText('Testbutton')).toBeInTheDocument();
-  expect(getByPlaceholderText('Filter')).toBeInTheDocument();
+
   await fireEvent.click(getByText('item1', { exact: false }));
   await waitFor(
     () => {
@@ -111,15 +107,15 @@ it('fires click event correct', async () => {
         { text: 'item2', value: 'value2' },
         { text: 'item3', value: 'value3' }
       ],
-      selectable: false
+      selectable: true
     }
   });
 
   const mock = jest.fn();
 
-  component.$on('selected', mock);
+  component.$on('itemSelected', mock);
 
-  await fireEvent.click(getByText('item1', { exact: false }));
+  await fireEvent.click(getByText('item1', { exact: false }).closest('li'));
 
   await waitFor(
     () => {
