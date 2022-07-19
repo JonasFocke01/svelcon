@@ -60,3 +60,7 @@ module.exports = {
   }, 
   plugins: [] 
 }; `
+
+# publishing
+
+The publishing workflow is fully done by a github action. All you need to do is to push code to master.
