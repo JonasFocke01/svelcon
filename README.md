@@ -26,7 +26,7 @@ The components are scructured in Folders to organize them
 
 # style
 
-All conponents are styled and will inherit your website sceme.
+All conponents are styled and will inherit your website scheme.
 
 Your `tailwind.config.cjs` file should look like this:
 
@@ -63,4 +63,5 @@ module.exports = {
 
 # publishing
 
-The publishing workflow is fully done by a github action. All you need to do is to push code to master.
+The publishing workflow is fully done by a github action.
+All you need to do is to push code to master.
