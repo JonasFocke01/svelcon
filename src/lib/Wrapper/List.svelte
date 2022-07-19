@@ -118,20 +118,18 @@
   onMount(() => {
     inputItemsString.length > 0
       ? inputItemsString.forEach((i) => {
-          itemlistToBind.push({
-            text: i,
-            value: '',
-            selected: false
-          });
+          itemlistToBind = [
+            ...itemlistToBind,
+            { text: i, value: i, selected: false }
+          ];
         })
       : null;
     inputItemsKeyValue.length > 0
       ? inputItemsKeyValue.forEach((i) => {
-          itemlistToBind.push({
-            text: i.text,
-            value: i.value,
-            selected: false
-          });
+          itemlistToBind = [
+            ...itemlistToBind,
+            { text: i.text, value: i.value, selected: false }
+          ];
         })
       : null;
   });
@@ -139,21 +137,21 @@
 
 <Card>
   <div class="flex flex-row">
-    <div class="mb-4">
+    <div class="mb-4" on:click={() => console.log(filter)}>
       <Text text={filter ? `#${text}#` : text} />
     </div>
     {#if filterable}
-      <dig class="ml-auto mt-1">
+      <div class="ml-auto mt-1">
         <Textfield placeholder="Filter" bind:value={filter} />
-      </dig>
+      </div>
     {/if}
   </div>
   <ul>
     {#if itemlistToBind && itemlistToBind.length}
-      {#each filter ? itemlistToBind.filter( (e) => Object.entries(e).find( (t) => (t[1] ? t[1]
-                        .toString()
-                        .toLowerCase()
-                        .indexOf(filter.toLowerCase()) > -1 : false) ) ) : itemlistToBind as item}
+      <!-- {#if filter} -->
+      {#each filter.length > 0 ? itemlistToBind.filter((e) => e.text
+                .toLowerCase()
+                .indexOf(filter.toLowerCase()) > -1) : itemlistToBind as item}
         <li
           on:click={() => selectItem(item)}
           class="mt-2 w-full flex flex-row p-2 rounded-lg cursor-pointer"

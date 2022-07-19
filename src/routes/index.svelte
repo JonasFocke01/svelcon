@@ -30,5 +30,12 @@
         text="*Lorem ipsum* #dolor sit -amet- _consectetur adipisicing_ elit.#"
       />
     </Card>
+    <List
+      inputItemsKeyValue={[
+        { text: 'item1', value: 'value1' },
+        { text: 'item2', value: 'value2' },
+        { text: 'item3', value: 'value3' }
+      ]}
+    />
   </div>
 </div>
