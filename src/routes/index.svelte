@@ -15,6 +15,7 @@
   import MediaQuery from '$lib/Wrapper/MediaQuery.svelte';
   import Table from '$lib/Wrapper/Table.svelte';
   import Text from '$lib/Wrapper/Text.svelte';
+  import Badge from '$lib/Wrapper/Badge.svelte';
 
   let showPopup = false;
 </script>
@@ -30,12 +31,10 @@
         text="*Lorem ipsum* #dolor sit -amet- _consectetur adipisicing_ elit.#"
       />
     </Card>
-    <List
-      inputItemsKeyValue={[
-        { text: 'item1', value: 'value1' },
-        { text: 'item2', value: 'value2' },
-        { text: 'item3', value: 'value3' }
-      ]}
-    />
+    <div>
+      <Badge text="3">
+        <Text text="HELLO *WORLD!!*" size="large" />
+      </Badge>
+    </div>
   </div>
 </div>
