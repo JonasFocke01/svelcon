@@ -57,18 +57,16 @@ An input field but segmented for each digit
   </div>
   <div class="flex flex-row">
     {#each segmentArray as segment}
-      <div class="focus:border-surface">
-        <div class="w-8 ml-1">
-          <Textfield
-            bind:this={segment.element}
-            placeholder="*"
-            maxLength={1}
-            on:input={(e) => {
-              //@ts-ignore
-              input(segment.id, e);
-            }}
-          />
-        </div>
+      <div class="w-8 ml-1 focus:border-surface">
+        <Textfield
+          bind:this={segment.element}
+          placeholder="*"
+          maxLength={1}
+          on:input={(e) => {
+            //@ts-ignore
+            input(segment.id, e);
+          }}
+        />
       </div>
     {/each}
   </div>
