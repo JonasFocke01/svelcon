@@ -23,7 +23,7 @@
   <div class="w-1/3 mt-10">
     <Card padding="p-4">
       <div class="text-center">
-        <Text text="HELLO *WORLD!*" size="large" />
+        <Text text="HELLO *WORLD!!*" size="large" />
       </div>
       <Text
         typewriter={{ enable: true, speed: 0.3 }}
