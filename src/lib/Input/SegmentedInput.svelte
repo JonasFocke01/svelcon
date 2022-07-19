@@ -1,9 +1,29 @@
+<!-- @component
+An input field but segmented for each digit
+
+**label**
+* string
+* default: ''
+* sets the label of the field
+
+**value**
+* string
+* default: ''
+* represents the value of the field
+
+**segmentCount**
+* number
+* default: !NO DEFAULT!
+* sets the number of segments which in turn are the number of inputable digits
+ -->
 <script lang="ts">
-  import { scale } from 'svelte/transition';
   import { createEventDispatcher, onMount } from 'svelte';
   import Textfield from './Textfield.svelte';
+  import Text from '$lib/Wrapper/Text.svelte';
 
   const eventDispatcher = createEventDispatcher();
+
+  export let label: string = '';
 
   export let value: string = '';
 
@@ -32,17 +52,24 @@
 </script>
 
 {#if segmentArray}
-  {#each segmentArray as segment}
-    <div in:scale class="w-8 flex flex-row ml-1 focus:border-surface">
-      <Textfield
-        bind:this={segment.element}
-        placeholder="*"
-        maxLength={1}
-        on:input={(e) => {
-          //@ts-ignore
-          input(segment.id, e);
-        }}
-      />
-    </div>
-  {/each}
+  <div>
+    <Text text={label} />
+  </div>
+  <div class="flex flex-row">
+    {#each segmentArray as segment}
+      <div class="focus:border-surface">
+        <div class="w-8 ml-1">
+          <Textfield
+            bind:this={segment.element}
+            placeholder="*"
+            maxLength={1}
+            on:input={(e) => {
+              //@ts-ignore
+              input(segment.id, e);
+            }}
+          />
+        </div>
+      </div>
+    {/each}
+  </div>
 {/if}
