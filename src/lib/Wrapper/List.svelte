@@ -164,8 +164,8 @@
             <Text text={`> ${item.text}`} />
           </div>
           {#if !showCheckbox && item.value}
-            <div class="w-2/3">
-              <Text text={`>${item.value}`} />
+            <div class="ml-4 w-2/3">
+              <Text text={`${item.value}`} />
             </div>
           {:else}
             <Checkbox bind:checked={item.selected} label="" />
