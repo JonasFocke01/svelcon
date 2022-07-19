@@ -178,42 +178,44 @@
 </script>
 
 {#if animate}
-  <div
-    in:typewriterWords
-    name={text
-      .replaceAll('#', '')
-      .replaceAll('*', '')
-      .replaceAll('_', '')
-      .replaceAll('-', '')
-      .replaceAll(' ', '')}
-    class="text-text"
-    class:text-text={textcolor === 'text'}
-    class:text-error={textcolor === 'error'}
-    class:text-success={textcolor === 'success'}
-    class:text-warning={textcolor === 'warning'}
-    class:text-info={textcolor === 'info'}
-    class:text-primary={textcolor === 'primary'}
-    class:text-secondary={textcolor === 'secondary'}
-    class:text-accent={textcolor === 'accent'}
-    class:text-surface={textcolor === 'surface'}
-    class:text-black={textcolor === 'black'}
-  >
-    <div class=" flex flex-row flex-wrap">
-      {#each displayWords as word, i}
-        <!-- TODO: the size propperty could also be given for each word -->
-        <p
-          in:typewriterLetters
-          class:text-sm={size === 'small'}
-          class:text-xl={size === 'medium'}
-          class:text-4xl={size === 'large'}
-          class:italic={word.italic}
-          class:line-through={word.strikeThrough}
-          class:font-bold={word.bold}
-          class:underline={word.underline}
-        >
-          {word.word}
-        </p>
-      {/each}
+  {#key words}
+    <div
+      in:typewriterWords
+      name={text
+        .replaceAll('#', '')
+        .replaceAll('*', '')
+        .replaceAll('_', '')
+        .replaceAll('-', '')
+        .replaceAll(' ', '')}
+      class="text-text"
+      class:text-text={textcolor === 'text'}
+      class:text-error={textcolor === 'error'}
+      class:text-success={textcolor === 'success'}
+      class:text-warning={textcolor === 'warning'}
+      class:text-info={textcolor === 'info'}
+      class:text-primary={textcolor === 'primary'}
+      class:text-secondary={textcolor === 'secondary'}
+      class:text-accent={textcolor === 'accent'}
+      class:text-surface={textcolor === 'surface'}
+      class:text-black={textcolor === 'black'}
+    >
+      <div class=" flex flex-row flex-wrap">
+        {#each displayWords as word, i}
+          <!-- TODO: the size propperty could also be given for each word -->
+          <p
+            in:typewriterLetters
+            class:text-sm={size === 'small'}
+            class:text-xl={size === 'medium'}
+            class:text-4xl={size === 'large'}
+            class:italic={word.italic}
+            class:line-through={word.strikeThrough}
+            class:font-bold={word.bold}
+            class:underline={word.underline}
+          >
+            {word.word}
+          </p>
+        {/each}
+      </div>
     </div>
-  </div>
+  {/key}
 {/if}
