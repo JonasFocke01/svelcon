@@ -59,9 +59,8 @@
   }
 </script>
 
-<div class="block text-xl font-bold">
-  <Text text={disabled ? `#*${label}*#` : `*${label}*`} />
-  <!-- Todo: disabled svg -->
+<div class="block">
+  <Text text={disabled ? `#${label}#` : `${label}`} />
   <input
     type="number"
     class="block w-full rounded-md shadow-sm pl-3 pt-1 pb-1 text-black"

@@ -22,14 +22,14 @@ display a basic checkbox
 * if true, the checkbox is disabled.
  -->
 <script lang="ts">
+  import Text from '$lib/Wrapper/Text.svelte';
+
   export let label: string = 'Label';
   export let checked: boolean = false;
   export let disabled: boolean = false;
 </script>
 
-<label
-  class="inline-flex items-center text-text text-xl font-bold cursor-pointer"
->
+<label class="inline-flex items-center cursor-pointer">
   <input
     type="checkbox"
     class="form-check-input h-4 w-4, rounded-sm bg-secondary checked:bg-accent focus:outline-none transition duration-200 my-1 align-top bg-no-repeat bg-center bg-contain float-left cursor-pointer"
@@ -37,5 +37,7 @@ display a basic checkbox
     on:change
     {disabled}
   />
-  <span class="ml-2">{label}</span>
+  <div class="ml-2">
+    <Text text={label} />
+  </div>
 </label>

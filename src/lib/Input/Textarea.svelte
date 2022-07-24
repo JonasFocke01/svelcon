@@ -37,6 +37,7 @@
   * adds the content above the input field and disposes a boolean if the user is to be warned.
  -->
 <script lang="ts">
+  import Text from '$lib/Wrapper/Text.svelte';
   import { onMount } from 'svelte';
 
   export let placeholder: string = 'Placeholder';
@@ -59,16 +60,14 @@
   });
 </script>
 
-<label class="block text-xl font-bold">
-  <span class="text-text" class:italic={disabled}>
-    {#if !label.includes('Label')}
-      {label}
-    {/if}
-    {#if required}
-      <i>*Notwendig</i>
-    {/if}
-    <slot {warnUser} />
-  </span>
+<label class="block">
+  {#if !label.includes('Label')}
+    <Text text={disabled ? `#${label}#` : label} />
+  {/if}
+  {#if required}
+    <Text text="#!*required#" />
+  {/if}
+  <slot {warnUser} />
   <textarea
     class="block w-full rounded-md pl-3 pt-1 pb-1 text-black
 			{warnUser ? 'bg-warning' : null}
