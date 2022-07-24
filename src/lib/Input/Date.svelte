@@ -8,7 +8,7 @@ display a date inputfield
 
 **placeholder**
 * string
-* default: 'Platzhalter'
+* default: 'Placeholder'
 * sets the placeholder for the field
 
 **min**
@@ -27,7 +27,7 @@ display a date inputfield
 * represents the value of the field
  -->
 <script lang="ts">
-  export let placeholder: string = 'Platzhalter';
+  export let placeholder: string = 'Placeholder';
   export let label: string = 'Label';
   export let min = '1970-01-01';
   export let max = '2100-01-01';

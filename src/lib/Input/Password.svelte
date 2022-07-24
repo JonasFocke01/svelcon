@@ -13,7 +13,7 @@
 
   **placeholder**
   * string
-  * default: 'Platzhalter'
+  * default: 'Placeholder'
   * sets the placeholder for the field
 
   **on:valueChanged**
@@ -30,7 +30,7 @@
 <script lang="ts">
   import { sha256 } from 'js-sha256';
 
-  export let placeholder: string = 'Platzhalter';
+  export let placeholder: string = 'Placeholder';
   export let label: string = 'Label';
   export let password: string = '';
   export let required: boolean = false;
