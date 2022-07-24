@@ -33,7 +33,11 @@
     </Card>
     <div>
       <Badge text="3">
-        <Text text="HELLO *WORLD!!*" size="large" />
+        <Text
+          typewriter={{ enable: true, speed: 0.3 }}
+          text="HELLO *WORLD!!*"
+          size="large"
+        />
       </Badge>
     </div>
   </div>
