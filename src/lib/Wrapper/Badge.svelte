@@ -16,11 +16,17 @@
     * slot
     * default: !NO DEFAULT!
     * what to display the badge on
+
+  **bounce**
+    * boolean
+    * default: true
+    * if true, the badge will bounce continously.
  -->
 <script lang="ts">
   import Text from './Text.svelte';
 
   export let text: string = '';
+  export let bounce: boolean = true;
 
   export let bgColor:
     | 'error'
@@ -35,8 +41,8 @@
     | 'black' = 'accent';
 </script>
 
-<div class="relative max-w-fit ">
-  <div class="absolute w-full -mt-2">
+<div class="relative max-w-fit">
+  <div class="absolute w-full -mt-2" class:animate-bounce={bounce}>
     <div class="ml-auto px-1 rounded-full max-w-min bg-{bgColor}">
       <div class="translate-x-0.5">
         <Text {text} size="small" />
