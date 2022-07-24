@@ -13,7 +13,7 @@
 
   **placeholder**
   * string
-  * default: 'Platzhalter'
+  * default: 'Placeholder'
   * sets the placeholder for the field
 
   **required**
@@ -58,7 +58,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
 
-  export let placeholder: string = 'Platzhalter';
+  export let placeholder: string = 'Placeholder';
   export let label: string = 'Label';
   export let required = false;
   export let value = '';
