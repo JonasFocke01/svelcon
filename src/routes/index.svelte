@@ -9,6 +9,7 @@
   import SegmentedInput from '$lib/Input/SegmentedInput.svelte';
   import Textarea from '$lib/Input/Textarea.svelte';
   import Textfield from '$lib/Input/Textfield.svelte';
+  import LoadingSpinner from '$lib/utilities/LoadingSpinner.svelte';
   import Badge from '$lib/Wrapper/Badge.svelte';
   import Card from '$lib/Wrapper/Card.svelte';
   import InplacePopup from '$lib/Wrapper/InplacePopup.svelte';
@@ -155,5 +156,11 @@
         />
       </div>
     {/if}
+  </Card>
+  <Card padding="p-4">
+    <svelte:fragment slot="Headder">
+      <Text text="LoadingSpinner" size="large" />
+    </svelte:fragment>
+    <LoadingSpinner speed={0.9} />
   </Card>
 </div>
