@@ -71,7 +71,6 @@
 
   //tokenize the text
   $: {
-    console.log(text);
     if (text) {
       tokenStack = [];
       letters = [];

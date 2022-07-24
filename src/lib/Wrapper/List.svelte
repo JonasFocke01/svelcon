@@ -138,7 +138,7 @@
 
 <Card>
   <div class="flex flex-row">
-    <div class="mb-4" on:click={() => console.log(filter)}>
+    <div class="mb-4">
       <Text text={filter ? `#${text}#` : text} />
     </div>
     {#if filterable}
