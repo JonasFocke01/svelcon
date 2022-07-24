@@ -35,7 +35,7 @@
 -->
 <script lang="ts">
   import { onMount } from 'svelte';
-  import type { HtmlTag } from 'svelte/internal';
+  import { currentLanguage, allLanguages } from '$lib/Stores/i18n';
 
   interface enrichedText {
     letter?: string;
@@ -45,7 +45,7 @@
     strikeThrough: boolean;
     underline: boolean;
   }
-  export let text = '-This- *is* _a_ #test#';
+  export let text = '-This- *is* _a_ #test#!!';
   export let size: 'small' | 'medium' | 'large' = 'medium';
   export let textcolor:
     | 'primary'
@@ -70,7 +70,9 @@
 
   let animate = false;
 
-  onMount(() => (animate = true));
+  onMount(() => {
+    animate = true;
+  });
 
   //tokenize the text
   $: {
