@@ -27,6 +27,8 @@ display a date inputfield
 * represents the value of the field
  -->
 <script lang="ts">
+  import Text from '$lib/Wrapper/Text.svelte';
+
   export let placeholder: string = 'Placeholder';
   export let label: string = 'Label';
   export let min = '1970-01-01';
@@ -34,8 +36,8 @@ display a date inputfield
   export let value = new Date();
 </script>
 
-<label class="block text-xl font-bold">
-  <span class="text-text">{label}</span>
+<label class="block">
+  <Text text={label} />
   <input
     type="datetime-local"
     class="block w-full rounded-md shadow-lg pl-3 pt-1 pb-1 text-black"

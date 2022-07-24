@@ -28,6 +28,7 @@
   * sets the field to required
  -->
 <script lang="ts">
+  import Text from '$lib/Wrapper/Text.svelte';
   import { sha256 } from 'js-sha256';
 
   export let placeholder: string = 'Placeholder';
@@ -40,8 +41,8 @@
   $: password = sha256(value);
 </script>
 
-<label class="block text-xl font-bold">
-  <span class="text-text">{label}</span>
+<label class="block">
+  <Text text={label} />
   <input
     {required}
     type="password"

@@ -22,14 +22,16 @@ display a basic dropdown field
 * triggered when the value of the input changes
  -->
 <script lang="ts">
+  import Text from '$lib/Wrapper/Text.svelte';
+
   export let options: Array<string>;
   export let label: string = 'Label';
   export let value = '';
 </script>
 
 {#if options}
-  <label class="block text-xl font-bold">
-    <span class="text-text">{label}</span>
+  <label class="block">
+    <Text text={label} />
     <select
       class="block w-full mt-1 rounded-md shadow-lg pl-3 pt-1 pb-1 text-black"
       bind:value

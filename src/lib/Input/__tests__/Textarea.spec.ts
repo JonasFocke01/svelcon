@@ -24,10 +24,10 @@ it('implements the logic', async () => {
   expect(getByPlaceholderText('Testplaceholder')).toHaveValue('valueOfTesting');
 
   expect(getByPlaceholderText('Testplaceholder')).not.toBeDisabled();
-  expect(() => getByText('*Notwendig')).toThrow();
+  expect(() => getByText('*required')).toThrow();
   await component.$set({ disabled: true });
   expect(getByPlaceholderText('Testplaceholder')).toBeDisabled();
   await component.$set({ disabled: false, required: true });
   expect(getByPlaceholderText('Testplaceholder')).not.toBeDisabled();
-  expect(getByText('*Notwendig')).toBeInTheDocument();
+  expect(getByText('*required')).toBeInTheDocument();
 });

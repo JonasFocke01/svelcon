@@ -57,6 +57,7 @@
  -->
 <script lang="ts">
   import { onMount } from 'svelte';
+  import Text from '$lib/Wrapper/Text.svelte';
 
   export let placeholder: string = 'Placeholder';
   export let label: string = 'Label';
@@ -85,16 +86,13 @@
   }
 </script>
 
-<label class="block text-xl font-bold">
-  <span class="text-text" class:italic={disabled}>
-    {#if !label.includes('Label')}
-      {label}
-    {/if}
-    {#if required}
-      <i>*Notwendig</i>
-    {/if}
-    <slot {warnUser} />
-  </span>
+<label class="block">
+  {#if !label.includes('Label')}
+    <Text text={disabled ? `#${label}#` : label} />
+  {/if}
+  {#if required}
+    <Text text="#!*required#" />
+  {/if}
   <input
     bind:this={thisInput}
     type="text"
