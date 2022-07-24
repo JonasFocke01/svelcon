@@ -139,7 +139,7 @@
                 <Button
                   size="small"
                   on:click={() => button.onClick(row)}
-                  text={{ text: button.text }}
+                  text={button.text}
                 />
               </td>
             {/each}

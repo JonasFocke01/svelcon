@@ -9,7 +9,7 @@ import { getByRole, render, waitFor } from '@testing-library/svelte';
 import Text from '../Text.svelte';
 
 it('has expected text', async () => {
-  const { getByText } = render(Text, { text: 'Testing' });
+  const { getByText } = render(Text, { props: { text: 'Testing' } });
 
   expect(getByText('Testing')).toBeInTheDocument();
 });
@@ -73,8 +73,10 @@ it('working effects', async () => {
 
 it('has expected typewriter behavior', async () => {
   const { getByText } = render(Text, {
-    text: 'I am typing this out slowly',
-    typewriter: { enable: true, speed: 0.3 }
+    props: {
+      text: 'I am typing this out slowly',
+      typewriterSpeed: 0.3
+    }
   });
 
   expect(() => getByText('slowly')).toThrow();

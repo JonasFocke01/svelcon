@@ -37,7 +37,6 @@
   * sets the callback function for the change event
  -->
 <script lang="ts">
-  import { onMount } from 'svelte';
   import Text from '$lib/Wrapper/Text.svelte';
 
   export let placeholder: string = '0';
