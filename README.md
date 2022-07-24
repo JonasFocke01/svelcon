@@ -23,6 +23,8 @@ The components are scructured in Folders to organize them
   - MediaQuery
   - Table
   - Text
+- Utilities
+  - LoadingSpinner
 
 # style
 
