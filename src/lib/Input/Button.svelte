@@ -1,9 +1,9 @@
 <!-- @component
   a basic button
 
-  **label**
+  **text**
   * string
-  * default: 'Label'
+  * default: ''
   * sets the text of the button
 
   **color**
@@ -11,6 +11,10 @@
   * default: 'bg-accent'
   * sets the color of the button
 
+  **textColor**
+  * string
+  * default: 'text'
+  * sets the text color of the button
   **additionalClasses**
   * string
   * default: ''
@@ -20,28 +24,15 @@
   * function
   * default: () => {}
   * triggered when the button is clicked
+
+  **typewriterSpeed**
+  * number
+  * default: 0
+  * if greater than 0, the text will be displayed typewriter style
  -->
 <script lang="ts">
   import Text from '$lib/Wrapper/Text.svelte';
 
-  interface Text {
-    text: string;
-    color?:
-      | 'error'
-      | 'primary'
-      | 'secondary'
-      | 'accent'
-      | 'success'
-      | 'warning'
-      | 'info'
-      | 'surface'
-      | 'text'
-      | 'black';
-    typewriter?: {
-      enable: boolean;
-      speed: number;
-    };
-  }
   export let bgColor:
     | 'error'
     | 'primary'
@@ -53,11 +44,23 @@
     | 'surface'
     | 'text'
     | 'black' = 'accent';
+
+  export let textColor:
+    | 'primary'
+    | 'secondary'
+    | 'accent'
+    | 'success'
+    | 'error'
+    | 'warning'
+    | 'info'
+    | 'surface'
+    | 'text'
+    | 'black' = 'text';
+
+  export let typewriterSpeed = 0;
   export let additionalClasses = '';
   export let size: 'small' | 'medium' | 'large' = 'medium';
-  export let text: Text = {
-    text: ''
-  };
+  export let text: string = '';
 </script>
 
 <label class="block">
@@ -71,11 +74,7 @@
     class:text-sm={size === 'small'}
   >
     <div class="flex flex-row justify-center">
-      <Text
-        text={text.text}
-        textcolor={text.color}
-        typewriter={text.typewriter}
-      />
+      <Text {text} {textColor} {typewriterSpeed} />
     </div>
   </button>
 </label>

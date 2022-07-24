@@ -177,7 +177,7 @@
   {#if button}
     <div class="mt-4">
       <Button
-        text={{ text: buttontext }}
+        text={buttontext}
         on:click={() => {
           eventDispatcher('buttonClicked');
         }}
