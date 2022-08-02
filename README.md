@@ -4,7 +4,9 @@ A component library for Svelte
 
 # Components
 
-The components are scructured in Folders to organize them
+The components are scructured in Folders to organize them.
+To import Checkbox the component you have to write: 
+`import Checkbox from '@jonas_focke/svelcon/Input/Checkbox'`
 
 - Input
   - Checkbox
