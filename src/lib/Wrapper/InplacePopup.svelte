@@ -44,6 +44,10 @@ a basic popup
 
   export let animationStatus = 'closed';
   export let tailwindClasses = '';
+  export let padding:
+    | `${'' | '-'}p${'' | 't' | 'b' | 'r' | 'l' | 'x' | 'y'}-${number}`
+    | '' = '';
+  export let rounded: boolean = false;
 
   export let InFlyOptions = {
     duration: 200,
@@ -87,9 +91,11 @@ a basic popup
 >
   <div
     data-testid="direct_container"
-    class="absolute border-2 rounded-2xl text-black {tailwindClasses}"
+    class="absolute border-2 {rounded
+      ? 'rounded-2xl'
+      : ''} text-black {tailwindClasses}"
   >
-    <Card>
+    <Card {rounded} {padding}>
       <slot />
     </Card>
   </div>

@@ -114,7 +114,11 @@
     </svelte:fragment>
     <Button text="Popup" on:click={() => (showPopup = !showPopup)} />
     {#if showPopup}
-      <InplacePopup on:outsideClick={() => (showPopup = false)}>
+      <InplacePopup
+        rounded
+        padding="p-2"
+        on:outsideClick={() => (showPopup = false)}
+      >
         <Text text="Hello World" />
       </InplacePopup>
     {/if}
