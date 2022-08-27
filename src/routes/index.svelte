@@ -45,49 +45,54 @@
     <svelte:fragment slot="Headder">
       <Text text="Checkbox" size="large" />
     </svelte:fragment>
-    <Checkbox />
+    <Checkbox disabled showDisabledIcon />
   </Card>
   <Card padding="p-4">
     <svelte:fragment slot="Headder">
       <Text text="Date" size="large" />
     </svelte:fragment>
-    <Date />
+    <Date disabled showDisabledIcon />
   </Card>
   <Card padding="p-4">
     <svelte:fragment slot="Headder">
       <Text text="Dropdown" size="large" />
     </svelte:fragment>
-    <Dropdown options={['TREE', 'FOREST']} />
+    <Dropdown disabled showDisabledIcon options={['TREE', 'FOREST']} />
   </Card>
   <Card padding="p-4">
     <svelte:fragment slot="Headder">
       <Text text="Number" size="large" />
     </svelte:fragment>
-    <Number />
+    <Number disabled showDisabledIcon />
   </Card>
   <Card padding="p-4">
     <svelte:fragment slot="Headder">
       <Text text="Password" size="large" />
     </svelte:fragment>
-    <Password />
+    <Password disabled showDisabledIcon />
   </Card>
   <Card padding="p-4">
     <svelte:fragment slot="Headder">
       <Text text="RadioGroup" size="large" />
     </svelte:fragment>
-    <RadioGroup items={['Hello', 'World', 'Tree', 'Forest']} />
+    <RadioGroup
+      disabled
+      label="HALLO"
+      showDisabledIcon
+      items={['Hello', 'World', 'Tree', 'Forest']}
+    />
   </Card>
   <Card padding="p-4">
     <svelte:fragment slot="Headder">
       <Text text="SegmentedInput" size="large" />
     </svelte:fragment>
-    <SegmentedInput segmentCount={4} />
+    <SegmentedInput label="HALLO" disabled showDisabledIcon segmentCount={4} />
   </Card>
   <Card padding="p-4">
     <svelte:fragment slot="Headder">
       <Text text="Textarea" size="large" />
     </svelte:fragment>
-    <Textarea />
+    <Textarea disabled showDisabledIcon label="HALLO" />
   </Card>
   <Card padding="p-4">
     <svelte:fragment slot="Headder">

@@ -15,11 +15,23 @@ An input field but segmented for each digit
 * number
 * default: !NO DEFAULT!
 * sets the number of segments which in turn are the number of inputable digits
+
+**disabled**
+* boolean
+* default: false
+* sets the field to disabled/readonly
+
+**showDisabledIcon**
+* boolean
+* default: false
+* shows a disabled icon if the field is disabled
  -->
 <script lang="ts">
   import { createEventDispatcher, onMount } from 'svelte';
   import Textfield from './Textfield.svelte';
   import Text from '$lib/Wrapper/Text.svelte';
+  import Fa from 'svelte-fa/src/fa.svelte';
+  import { faTextSlash } from '@fortawesome/free-solid-svg-icons/index.es';
 
   const eventDispatcher = createEventDispatcher();
 
@@ -28,6 +40,9 @@ An input field but segmented for each digit
   export let value: string = '';
 
   export let segmentCount: number;
+
+  export let disabled: boolean = false;
+  export let showDisabledIcon: boolean = false;
 
   let segmentArray: Array<{ id: number; value: string; element: any }>;
 
@@ -53,7 +68,14 @@ An input field but segmented for each digit
 
 {#if segmentArray}
   <div>
-    <Text text={label} />
+    <div class="flex flex-row">
+      <Text text={label} />
+      {#if disabled && showDisabledIcon}
+        <div class="mt-1.5 text-text">
+          <Fa icon={faTextSlash} />
+        </div>
+      {/if}
+    </div>
   </div>
   <div class="flex flex-row">
     {#each segmentArray as segment}
@@ -66,6 +88,7 @@ An input field but segmented for each digit
             //@ts-ignore
             input(segment.id, e);
           }}
+          {disabled}
         />
       </div>
     {/each}

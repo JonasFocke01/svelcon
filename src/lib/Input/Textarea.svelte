@@ -35,38 +35,52 @@
   * HTML
   * default: no default
   * adds the content above the input field and disposes a boolean if the user is to be warned.
+
+  **showDisabledIcon**
+  * boolean
+  * default: false
+  * if true, the disabled icon will be displayed, if the field is disabled
  -->
 <script lang="ts">
   import Text from '$lib/Wrapper/Text.svelte';
-  import { onMount } from 'svelte';
+  import Fa from 'svelte-fa/src/fa.svelte';
+  import { faTextSlash } from '@fortawesome/free-solid-svg-icons/index.es';
 
   export let placeholder: string = 'Placeholder';
   export let label: string = 'Label';
   export let required = false;
   export let value = '';
   export let disabled = false;
+  export let showDisabledIcon = false;
 
   let warnUser = false;
 
   $: {
     warnUser = required && value?.length === 0;
   }
-  onMount(() => {
+  $: {
     if (disabled && required) {
       console.error(
         'ERROR: input ' + label + ' is disabled and required at the same time!'
       );
     }
-  });
+  }
 </script>
 
 <label class="block">
-  {#if !label.includes('Label')}
-    <Text text={disabled ? `#${label}#` : label} />
-  {/if}
-  {#if required}
-    <Text text="#!*required#" />
-  {/if}
+  <div class="flex flex-row">
+    {#if !label.includes('Label')}
+      <Text text={label} />
+    {/if}
+    {#if required}
+      <Text text="#!*required#" />
+    {/if}
+    {#if disabled && showDisabledIcon}
+      <div class="mt-1.5 text-text">
+        <Fa icon={faTextSlash} />
+      </div>
+    {/if}
+  </div>
   <slot {warnUser} />
   <textarea
     class="block w-full rounded-md pl-3 pt-1 pb-1 text-black
