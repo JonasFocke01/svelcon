@@ -43,8 +43,7 @@
  -->
 <script lang="ts">
   import Text from '$lib/Wrapper/Text.svelte';
-  // import Fa from 'svelte-fa/src/fa.svelte';
-  // import { faTextSlash } from '@fortawesome/free-solid-svg-icons/index.es';
+  import MdDoNotDisturbAlt from 'svelte-icons/md/MdDoNotDisturbAlt.svelte';
 
   export let placeholder: string = 'Placeholder';
   export let label: string = 'Label';
@@ -75,11 +74,11 @@
     {#if required}
       <Text text="#!*required#" />
     {/if}
-    <!-- {#if disabled && showDisabledIcon}
-      <div class="mt-1.5 text-text">
-        <Fa icon={faTextSlash} />
+    {#if disabled && showDisabledIcon}
+       <div class="mt-1 w-4 text-text">
+        <MdDoNotDisturbAlt />
       </div>
-    {/if} -->
+    {/if}
   </div>
   <slot {warnUser} />
   <textarea

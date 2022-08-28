@@ -63,7 +63,7 @@
     <svelte:fragment slot="Headder">
       <Text text="Number" size="4xl" />
     </svelte:fragment>
-    <Number disabled showDisabledIcon />
+    <Number label="HALLO" disabled showDisabledIcon />
   </Card>
   <Card padding="p-4">
     <svelte:fragment slot="Headder">
