@@ -160,10 +160,16 @@
       const duration = children.length / (typewriterSpeed * 0.01);
       return {
         duration,
-        tick: (t) => {
+        tick: (t: any) => {
           const howMuchWordsToDisplay = Math.floor(children.length * t);
           displayWords = words.slice(0, howMuchWordsToDisplay);
         }
+      };
+    } else {
+      const duration = 0;
+      return {
+        duration,
+        tick: () => {}
       };
     }
   }
@@ -174,10 +180,16 @@
       const duration = text.length / (typewriterSpeed * 0.1);
       return {
         duration,
-        tick: (t) => {
+        tick: (t: any) => {
           const i = text.length * t;
           node.textContent = text.slice(0, i);
         }
+      };
+    } else {
+      const duration = 0;
+      return {
+        duration,
+        tick: () => {}
       };
     }
   }

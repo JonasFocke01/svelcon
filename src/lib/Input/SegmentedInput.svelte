@@ -1,3 +1,5 @@
+<svelte:options accessors />
+
 <!-- @component
 An input field but segmented for each digit
 
@@ -48,7 +50,7 @@ An input field but segmented for each digit
 
   onMount(() => {
     segmentArray = Array.apply(null, Array(segmentCount)).map(function (x, i) {
-      return { id: i, value: '', focus: false };
+      return { id: i, value: '', focus: false, element: undefined };
     });
     value = segmentArray.map((segment) => ' ').join('');
   });

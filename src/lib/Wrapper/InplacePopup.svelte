@@ -55,7 +55,7 @@ a basic popup
   };
 
   let id = Date.now() + Math.round(Math.random());
-  let listener;
+  let listener: any;
   onMount(() => {
     listener = document.addEventListener('click', handleOutsideClick, true);
   });
@@ -66,7 +66,7 @@ a basic popup
 
   function handleOutsideClick(e: MouseEvent) {
     if (
-      !document.getElementById(`InplacePopup${id}`).contains(e.target as Node)
+      !document.getElementById(`InplacePopup${id}`)?.contains(e.target as Node)
     ) {
       document.removeEventListener('click', handleOutsideClick, true);
       dispatch('outsideClick');

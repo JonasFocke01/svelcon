@@ -1,3 +1,5 @@
+<svelte:options accessors />
+
 <!-- @component
 display a basic radio group
 

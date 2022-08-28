@@ -1,11 +1,5 @@
-/**
- * @jest-environment jsdom
- */
-// NOTE: jest-dom adds handy assertions to Jest and it is recommended, but not required.
-import '@testing-library/jest-dom';
-
 import { render, fireEvent } from '@testing-library/svelte';
-
+import { expect, describe, it, vi } from 'vitest';
 import RadioGroup from '../RadioGroup.svelte';
 
 it('renders without label', async () => {
@@ -13,8 +7,8 @@ it('renders without label', async () => {
     items: ['testItem1', 'testItem2']
   });
 
-  expect(getByText('testItem1')).toBeInTheDocument();
-  expect(getByText('testItem2')).toBeInTheDocument();
+  expect(getByText('testItem1'));
+  expect(getByText('testItem2'));
 });
 
 it('renders with label', async () => {
@@ -23,28 +17,25 @@ it('renders with label', async () => {
     items: ['testItem1', 'testItem2']
   });
 
-  expect(getByText('Testing')).toBeInTheDocument();
-  expect(getByText('testItem1')).toBeInTheDocument();
-  expect(getByText('testItem2')).toBeInTheDocument();
+  expect(getByText('Testing'));
+  expect(getByText('testItem1'));
+  expect(getByText('testItem2'));
 });
 
 it('implements radio logic', async () => {
-  const { getByText } = render(RadioGroup, {
+  const { getByText, getByRole, getAllByRole, component } = render(RadioGroup, {
     items: ['testItem1', 'testItem2']
   });
 
-  expect(getByText('testItem1')).toBeInTheDocument();
-  expect(document.getElementById('testItem1')).not.toBeChecked();
-  expect(getByText('testItem2')).toBeInTheDocument();
-  expect(document.getElementById('testItem2')).not.toBeChecked();
+  expect(getAllByRole('radio', { checked: false })).toHaveLength(2);
 
-  await fireEvent.click(document.getElementById('testItem1'));
-  expect(document.getElementById('testItem1')).toBeChecked();
-  expect(document.getElementById('testItem2')).not.toBeChecked();
+  await fireEvent.click(getAllByRole('radio')[0]);
 
-  await fireEvent.click(document.getElementById('testItem2'));
-  expect(document.getElementById('testItem1')).not.toBeChecked();
-  expect(document.getElementById('testItem2')).toBeChecked();
+  expect(getAllByRole('radio', { checked: false })).toHaveLength(1);
+
+  await fireEvent.click(getAllByRole('radio')[1]);
+
+  expect(getAllByRole('radio', { checked: false })).toHaveLength(1);
 });
 
 it('implements on:click logic', async () => {
@@ -53,24 +44,24 @@ it('implements on:click logic', async () => {
     items: ['testItem1', 'testItem2']
   });
 
-  const mock = jest.fn();
+  const mock = vi.fn();
 
   component.$on('change', mock);
-  await fireEvent.click(document.getElementById('testItem1'));
-  await fireEvent.click(document.getElementById('testItem1'));
-  await fireEvent.click(document.getElementById('testItem2'));
+  await fireEvent.click(document.getElementById('testItem1')!);
+  await fireEvent.click(document.getElementById('testItem1')!);
+  await fireEvent.click(document.getElementById('testItem2')!);
 
   expect(mock).toHaveBeenCalledTimes(3);
 });
 
-it('exports right checked value', async () => {
+it('exports correct checked value', async () => {
   const { component } = render(RadioGroup, {
     label: 'Testing',
     items: ['testItem1', 'testItem2']
   });
 
-  await fireEvent.click(document.getElementById('testItem1'));
+  await fireEvent.click(document.getElementById('testItem1')!);
   expect(component.chosenItem).toBe('testItem1');
-  await fireEvent.click(document.getElementById('testItem2'));
+  await fireEvent.click(document.getElementById('testItem2')!);
   expect(component.chosenItem).toBe('testItem2');
 });
