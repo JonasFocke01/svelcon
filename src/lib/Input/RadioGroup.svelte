@@ -34,8 +34,8 @@ display a basic radio group
 <script lang="ts">
   import { createEventDispatcher } from 'svelte/internal';
   import Text from '$lib/Wrapper/Text.svelte';
-  import Fa from 'svelte-fa/src/fa.svelte';
-  import { faTextSlash } from '@fortawesome/free-solid-svg-icons/index.es';
+  // import Fa from 'svelte-fa/src/fa.svelte';
+  // import { faTextSlash } from '@fortawesome/free-solid-svg-icons/index.es';
 
   let eventDispatcher = createEventDispatcher();
   export let label: string = '';
@@ -58,11 +58,11 @@ display a basic radio group
   {#if label}
     <div class="flex flex-row">
       <Text text={label} />
-      {#if disabled && showDisabledIcon}
+      <!-- {#if disabled && showDisabledIcon}
         <div class="mt-1.5 text-text">
           <Fa icon={faTextSlash} />
         </div>
-      {/if}
+      {/if} -->
     </div>
   {/if}
   {#if items.length}

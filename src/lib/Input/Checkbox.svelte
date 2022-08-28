@@ -28,8 +28,8 @@ display a basic checkbox
  -->
 <script lang="ts">
   import Text from '$lib/Wrapper/Text.svelte';
-  import Fa from 'svelte-fa/src/fa.svelte';
-  import { faTextSlash } from '@fortawesome/free-solid-svg-icons/index.es';
+  // import Fa from 'svelte-fa/src/fa.svelte';
+  // import { faTextSlash } from '@fortawesome/free-solid-svg-icons/index.es';
 
   export let label: string = 'Label';
   export let checked: boolean = false;
@@ -47,9 +47,9 @@ display a basic checkbox
   />
   <div class="ml-2 flex flex-row">
     {#if disabled && showDisabledIcon}
-      <div class="mt-1.5 text-text">
+      <!-- <div class="mt-1.5 text-text">
         <Fa icon={faTextSlash} />
-      </div>
+      </div> -->
     {/if}
     <div class="ml-1">
       <Text text={label} />

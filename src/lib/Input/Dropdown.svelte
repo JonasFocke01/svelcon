@@ -33,8 +33,8 @@ display a basic dropdown field
  -->
 <script lang="ts">
   import Text from '$lib/Wrapper/Text.svelte';
-  import Fa from 'svelte-fa/src/fa.svelte';
-  import { faTextSlash } from '@fortawesome/free-solid-svg-icons/index.es';
+  // import Fa from 'svelte-fa/src/fa.svelte';
+  // import { faTextSlash } from '@fortawesome/free-solid-svg-icons/index.es';
 
   export let options: Array<string>;
   export let label: string = 'Label';
@@ -47,11 +47,11 @@ display a basic dropdown field
   <label class="block">
     <div class="flex flex-row">
       <Text text={label} />
-      {#if disabled && showDisabledIcon}
+      <!-- {#if disabled && showDisabledIcon}
         <div class="mt-1.5 text-text">
           <Fa icon={faTextSlash} />
         </div>
-      {/if}
+      {/if} -->
     </div>
     <select
       class="block w-full mt-1 rounded-md shadow-lg pl-3 pt-1 pb-1 text-black"

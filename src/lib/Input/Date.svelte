@@ -38,8 +38,8 @@ display a date inputfield
  -->
 <script lang="ts">
   import Text from '$lib/Wrapper/Text.svelte';
-  import Fa from 'svelte-fa/src/fa.svelte';
-  import { faTextSlash } from '@fortawesome/free-solid-svg-icons/index.es';
+  // import Fa from 'svelte-fa/src/fa.svelte';
+  // import { faTextSlash } from '@fortawesome/free-solid-svg-icons/index.es';
 
   export let placeholder: string = 'Placeholder';
   export let label: string = 'Label';
@@ -55,9 +55,9 @@ display a date inputfield
     <Text text={label} />
 
     {#if disabled && showDisabledIcon}
-      <div class="mt-1.5 text-text">
+      <!-- <div class="mt-1.5 text-text">
         <Fa icon={faTextSlash} />
-      </div>
+      </div> -->
     {/if}
   </div>
   <input
