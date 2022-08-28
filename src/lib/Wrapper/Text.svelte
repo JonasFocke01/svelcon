@@ -18,8 +18,8 @@
   * the text to display
 
   **size**
-  * string: 'small' | 'medium' | 'large'
-  * default: 'medium'
+  * string: tailwind text size (2xl | xs | [...])
+  * default: 'base'
   * the size in wich the text should be displayed
   
   **textColor**
@@ -44,7 +44,14 @@
     underline: boolean;
   }
   export let text = '-This- *is* _a_ #test#!!';
-  export let size: 'small' | 'medium' | 'large' = 'medium';
+  export let size:
+    | `${'' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'}${
+        | ''
+        | 'xs'
+        | 'sm'
+        | 'base'
+        | 'lg'
+        | 'xl'}` = 'base';
   export let textColor:
     | 'primary'
     | 'secondary'
@@ -153,10 +160,16 @@
       const duration = children.length / (typewriterSpeed * 0.01);
       return {
         duration,
-        tick: (t) => {
+        tick: (t: any) => {
           const howMuchWordsToDisplay = Math.floor(children.length * t);
           displayWords = words.slice(0, howMuchWordsToDisplay);
         }
+      };
+    } else {
+      const duration = 0;
+      return {
+        duration,
+        tick: () => {}
       };
     }
   }
@@ -167,10 +180,16 @@
       const duration = text.length / (typewriterSpeed * 0.1);
       return {
         duration,
-        tick: (t) => {
+        tick: (t: any) => {
           const i = text.length * t;
           node.textContent = text.slice(0, i);
         }
+      };
+    } else {
+      const duration = 0;
+      return {
+        duration,
+        tick: () => {}
       };
     }
   }
@@ -200,12 +219,9 @@
     >
       <div class=" flex flex-row flex-wrap">
         {#each displayWords as word, i}
-          <!-- TODO: the size propperty could also be given for each word -->
           <p
+            class="text-{size}"
             in:typewriterLetters
-            class:text-sm={size === 'small'}
-            class:text-xl={size === 'medium'}
-            class:text-4xl={size === 'large'}
             class:italic={word.italic}
             class:line-through={word.strikeThrough}
             class:font-bold={word.bold}

@@ -20,13 +20,21 @@ display a basic checkbox
 * boolean
 * default: false
 * if true, the checkbox is disabled.
+
+**showDisabledIcon**
+* boolean
+* default: false
+* if true, the disabled icon will be displayed, if the checkbox is disabled.
  -->
 <script lang="ts">
   import Text from '$lib/Wrapper/Text.svelte';
+  // import Fa from 'svelte-fa/src/fa.svelte';
+  // import { faTextSlash } from '@fortawesome/free-solid-svg-icons/index.es';
 
   export let label: string = 'Label';
   export let checked: boolean = false;
   export let disabled: boolean = false;
+  export let showDisabledIcon = false;
 </script>
 
 <label class="inline-flex items-center cursor-pointer">
@@ -37,7 +45,14 @@ display a basic checkbox
     on:change
     {disabled}
   />
-  <div class="ml-2">
-    <Text text={label} />
+  <div class="ml-2 flex flex-row">
+    {#if disabled && showDisabledIcon}
+      <!-- <div class="mt-1.5 text-text">
+        <Fa icon={faTextSlash} />
+      </div> -->
+    {/if}
+    <div class="ml-1">
+      <Text text={label} />
+    </div>
   </div>
 </label>

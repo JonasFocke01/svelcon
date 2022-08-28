@@ -1,3 +1,5 @@
+<svelte:options accessors />
+
 <!-- @component
   a basic badge
 
@@ -45,7 +47,7 @@
   <div class="absolute w-full -mt-2" class:animate-bounce={bounce}>
     <div class="ml-auto px-1 rounded-full max-w-min bg-{bgColor}">
       <div class="translate-x-0.5">
-        <Text {text} size="small" />
+        <Text {text} size="xs" />
       </div>
     </div>
   </div>

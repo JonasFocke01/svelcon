@@ -44,6 +44,10 @@ a basic popup
 
   export let animationStatus = 'closed';
   export let tailwindClasses = '';
+  export let padding:
+    | `${'' | '-'}p${'' | 't' | 'b' | 'r' | 'l' | 'x' | 'y'}-${number}`
+    | '' = '';
+  export let rounded: boolean = false;
 
   export let InFlyOptions = {
     duration: 200,
@@ -51,7 +55,7 @@ a basic popup
   };
 
   let id = Date.now() + Math.round(Math.random());
-  let listener;
+  let listener: any;
   onMount(() => {
     listener = document.addEventListener('click', handleOutsideClick, true);
   });
@@ -62,7 +66,7 @@ a basic popup
 
   function handleOutsideClick(e: MouseEvent) {
     if (
-      !document.getElementById(`InplacePopup${id}`).contains(e.target as Node)
+      !document.getElementById(`InplacePopup${id}`)?.contains(e.target as Node)
     ) {
       document.removeEventListener('click', handleOutsideClick, true);
       dispatch('outsideClick');
@@ -87,9 +91,11 @@ a basic popup
 >
   <div
     data-testid="direct_container"
-    class="absolute border-2 rounded-2xl text-black {tailwindClasses}"
+    class="absolute border-2 {rounded
+      ? 'rounded-2xl'
+      : ''} text-black {tailwindClasses}"
   >
-    <Card>
+    <Card {rounded} {padding}>
       <slot />
     </Card>
   </div>

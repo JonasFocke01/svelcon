@@ -25,6 +25,8 @@ To import Checkbox the component you have to write:
   - MediaQuery
   - Table
   - Text
+- Utilities
+  - LoadingSpinner
 
 # style
 

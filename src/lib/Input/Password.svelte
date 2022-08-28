@@ -22,6 +22,16 @@
   * default: () => {}
   * sets the callback function for the change event
 
+  **disabled**
+  * boolean
+  * default: false
+  * sets the field to disabled/readonly
+
+  **showDisabledIcon**
+  * boolean
+  * default: false
+  * shows a disabled icon if the field is disabled
+
   **required**
   * boolean
   * default: false
@@ -30,11 +40,14 @@
 <script lang="ts">
   import Text from '$lib/Wrapper/Text.svelte';
   import { sha256 } from 'js-sha256';
+  import MdDoNotDisturbAlt from 'svelte-icons/md/MdDoNotDisturbAlt.svelte';
 
   export let placeholder: string = 'Placeholder';
   export let label: string = 'Label';
   export let password: string = '';
   export let required: boolean = false;
+  export let disabled: boolean = false;
+  export let showDisabledIcon: boolean = false;
 
   let value: string = '';
 
@@ -42,12 +55,20 @@
 </script>
 
 <label class="block">
-  <Text text={label} />
+  <div class="flex flex-row">
+    <Text text={label} />
+    {#if disabled && showDisabledIcon}
+      <div class="mt-1 w-4 text-text">
+        <MdDoNotDisturbAlt />
+      </div>
+    {/if}
+  </div>
   <input
     {required}
     type="password"
     class="block w-full rounded-md shadow-sm pl-3 pt-1 pb-1 text-black"
     {placeholder}
     bind:value
+    {disabled}
   />
 </label>

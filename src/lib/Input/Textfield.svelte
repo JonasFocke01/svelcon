@@ -54,10 +54,15 @@
   **method: focusThis**
   * function
   * focuses and selects everything in the input field.
+
+  **showDisabledIcon**
+  * boolean
+  * default: false
+  * if true, the disabled icon will be displayed, if the field is disabled
  -->
 <script lang="ts">
-  import { onMount } from 'svelte';
   import Text from '$lib/Wrapper/Text.svelte';
+  import MdDoNotDisturbAlt from 'svelte-icons/md/MdDoNotDisturbAlt.svelte';
 
   export let placeholder: string = 'Placeholder';
   export let label: string = 'Label';
@@ -66,20 +71,23 @@
   export let paddingleft = false;
   export let disabled = false;
   export let maxLength = 255;
+  export let showDisabledIcon = false;
 
   let warnUser = false;
 
   $: {
-    warnUser = required && value?.length === 0;
-  }
-  onMount(() => {
     if (disabled && required) {
       console.error(
-        'ERROR: input ' + label + ' is disabled and required at the same time!'
+        `The Inputfield ${label} is disabled and required simultaneously. This is not allowed.`
       );
     }
-  });
-  let thisInput;
+  }
+
+  $: {
+    warnUser = required && value?.length === 0;
+  }
+
+  let thisInput: any;
   export function focusThis() {
     thisInput.focus();
     thisInput.select();
@@ -87,12 +95,19 @@
 </script>
 
 <label class="block">
-  {#if !label.includes('Label')}
-    <Text text={disabled ? `#${label}#` : label} />
-  {/if}
-  {#if required}
-    <Text text="#!*required#" />
-  {/if}
+  <div class="flex flex-row">
+    {#if !label.includes('Label')}
+      <Text text={disabled ? `#${label}#` : label} />
+    {/if}
+    {#if required}
+      <Text text="#!*required#" />
+    {/if}
+    {#if disabled && showDisabledIcon}
+      <div class="mt-1 w-4 text-text">
+        <MdDoNotDisturbAlt />
+      </div>
+    {/if}
+  </div>
   <input
     bind:this={thisInput}
     type="text"

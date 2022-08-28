@@ -1,3 +1,5 @@
+<svelte:options accessors />
+
 <!-- @component
 An input field but segmented for each digit
 
@@ -15,11 +17,22 @@ An input field but segmented for each digit
 * number
 * default: !NO DEFAULT!
 * sets the number of segments which in turn are the number of inputable digits
+
+**disabled**
+* boolean
+* default: false
+* sets the field to disabled/readonly
+
+**showDisabledIcon**
+* boolean
+* default: false
+* shows a disabled icon if the field is disabled
  -->
 <script lang="ts">
   import { createEventDispatcher, onMount } from 'svelte';
   import Textfield from './Textfield.svelte';
   import Text from '$lib/Wrapper/Text.svelte';
+  import MdDoNotDisturbAlt from 'svelte-icons/md/MdDoNotDisturbAlt.svelte';
 
   const eventDispatcher = createEventDispatcher();
 
@@ -29,11 +42,14 @@ An input field but segmented for each digit
 
   export let segmentCount: number;
 
+  export let disabled: boolean = false;
+  export let showDisabledIcon: boolean = false;
+
   let segmentArray: Array<{ id: number; value: string; element: any }>;
 
   onMount(() => {
     segmentArray = Array.apply(null, Array(segmentCount)).map(function (x, i) {
-      return { id: i, value: '', focus: false };
+      return { id: i, value: '', focus: false, element: undefined };
     });
     value = segmentArray.map((segment) => ' ').join('');
   });
@@ -53,7 +69,14 @@ An input field but segmented for each digit
 
 {#if segmentArray}
   <div>
-    <Text text={label} />
+    <div class="flex flex-row">
+      <Text text={label} />
+      {#if disabled && showDisabledIcon}
+         <div class="mt-1 w-4 text-text">
+        <MdDoNotDisturbAlt />
+      </div>
+      {/if}
+    </div>
   </div>
   <div class="flex flex-row">
     {#each segmentArray as segment}
@@ -66,6 +89,7 @@ An input field but segmented for each digit
             //@ts-ignore
             input(segment.id, e);
           }}
+          {disabled}
         />
       </div>
     {/each}

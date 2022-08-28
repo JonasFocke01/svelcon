@@ -33,7 +33,7 @@
 <div class="flex flex-wrap w-full p-10 space-x-4 space-y-6">
   <Card padding="p-4">
     <svelte:fragment slot="Headder">
-      <Text text="Button" size="large" />
+      <Text text="Button" size="4xl" />
     </svelte:fragment>
     <Button
       text="Hello World"
@@ -43,61 +43,66 @@
   </Card>
   <Card padding="p-4">
     <svelte:fragment slot="Headder">
-      <Text text="Checkbox" size="large" />
+      <Text text="Checkbox" size="4xl" />
     </svelte:fragment>
-    <Checkbox />
+    <Checkbox disabled showDisabledIcon />
   </Card>
   <Card padding="p-4">
     <svelte:fragment slot="Headder">
-      <Text text="Date" size="large" />
+      <Text text="Date" size="4xl" />
     </svelte:fragment>
-    <Date />
+    <Date disabled showDisabledIcon />
   </Card>
   <Card padding="p-4">
     <svelte:fragment slot="Headder">
-      <Text text="Dropdown" size="large" />
+      <Text text="Dropdown" size="4xl" />
     </svelte:fragment>
-    <Dropdown options={['TREE', 'FOREST']} />
+    <Dropdown disabled showDisabledIcon options={['TREE', 'FOREST']} />
   </Card>
   <Card padding="p-4">
     <svelte:fragment slot="Headder">
-      <Text text="Number" size="large" />
+      <Text text="Number" size="4xl" />
     </svelte:fragment>
-    <Number />
+    <Number label="HALLO" disabled showDisabledIcon />
   </Card>
   <Card padding="p-4">
     <svelte:fragment slot="Headder">
-      <Text text="Password" size="large" />
+      <Text text="Password" size="4xl" />
     </svelte:fragment>
-    <Password />
+    <Password disabled showDisabledIcon />
   </Card>
   <Card padding="p-4">
     <svelte:fragment slot="Headder">
-      <Text text="RadioGroup" size="large" />
+      <Text text="RadioGroup" size="4xl" />
     </svelte:fragment>
-    <RadioGroup items={['Hello', 'World', 'Tree', 'Forest']} />
+    <RadioGroup
+      disabled
+      label="HALLO"
+      showDisabledIcon
+      items={['Hello', 'World', 'Tree', 'Forest']}
+    />
   </Card>
   <Card padding="p-4">
     <svelte:fragment slot="Headder">
-      <Text text="SegmentedInput" size="large" />
+      <Text text="SegmentedInput" size="4xl" />
     </svelte:fragment>
-    <SegmentedInput segmentCount={4} />
+    <SegmentedInput label="HALLO" disabled showDisabledIcon segmentCount={4} />
   </Card>
   <Card padding="p-4">
     <svelte:fragment slot="Headder">
-      <Text text="Textarea" size="large" />
+      <Text text="Textarea" size="4xl" />
     </svelte:fragment>
-    <Textarea />
+    <Textarea disabled showDisabledIcon label="HALLO" />
   </Card>
   <Card padding="p-4">
     <svelte:fragment slot="Headder">
-      <Text text="Textfield" size="large" />
+      <Text text="Textfield" size="4xl" />
     </svelte:fragment>
     <Textfield />
   </Card>
   <Card padding="p-4">
     <svelte:fragment slot="Headder">
-      <Text text="Badge" size="large" />
+      <Text text="Badge" size="4xl" />
     </svelte:fragment>
     <Badge text="4">
       <Text text="Hello World" />
@@ -105,18 +110,22 @@
   </Card>
   <Card padding="p-4">
     <svelte:fragment slot="Headder">
-      <Text text="InplacePopup" size="large" />
+      <Text text="InplacePopup" size="4xl" />
     </svelte:fragment>
     <Button text="Popup" on:click={() => (showPopup = !showPopup)} />
     {#if showPopup}
-      <InplacePopup on:outsideClick={() => (showPopup = false)}>
+      <InplacePopup
+        rounded
+        padding="p-2"
+        on:outsideClick={() => (showPopup = false)}
+      >
         <Text text="Hello World" />
       </InplacePopup>
     {/if}
   </Card>
   <Card padding="p-4">
     <svelte:fragment slot="Headder">
-      <Text text="MediaQuery" size="large" />
+      <Text text="MediaQuery" size="4xl" />
     </svelte:fragment>
     <MediaQuery query="desktop">
       <Text text="Im only visible on Desktop" />
@@ -124,13 +133,13 @@
   </Card>
   <Card padding="p-4">
     <svelte:fragment slot="Headder">
-      <Text text="List" size="large" />
+      <Text text="List" size="4xl" />
     </svelte:fragment>
     <List inputItemsString={['Tree', 'Forest']} />
   </Card>
   <Card padding="p-4">
     <svelte:fragment slot="Headder">
-      <Text text="Table" size="large" />
+      <Text text="Table" size="4xl" />
     </svelte:fragment>
     <Table
       data={[
@@ -146,7 +155,7 @@
   </Card>
   <Card padding="p-4">
     <svelte:fragment slot="Headder">
-      <Text text="Text" size="large" />
+      <Text text="Text" size="4xl" />
     </svelte:fragment>
     {#if animateText}
       <div class="cursor-pointer" on:click={() => (animateText = false)}>
@@ -159,7 +168,7 @@
   </Card>
   <Card padding="p-4">
     <svelte:fragment slot="Headder">
-      <Text text="LoadingSpinner" size="large" />
+      <Text text="LoadingSpinner" size="4xl" />
     </svelte:fragment>
     <LoadingSpinner speed={0.9} />
   </Card>

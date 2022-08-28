@@ -20,22 +20,43 @@ display a basic dropdown field
 * function
 * default: () => {}
 * triggered when the value of the input changes
+
+**disabled**
+* boolean
+* default: false
+* if true, the field is disabled/readonly
+
+**showDisabledIcon**
+* boolean
+* default: false
+* if true, the disabled icon will be displayed, if the field is disabled
  -->
 <script lang="ts">
   import Text from '$lib/Wrapper/Text.svelte';
+  import MdDoNotDisturbAlt from 'svelte-icons/md/MdDoNotDisturbAlt.svelte';
 
   export let options: Array<string>;
   export let label: string = 'Label';
   export let value = '';
+  export let disabled = false;
+  export let showDisabledIcon = false;
 </script>
 
 {#if options}
   <label class="block">
-    <Text text={label} />
+    <div class="flex flex-row">
+      <Text text={label} />
+      {#if disabled && showDisabledIcon}
+         <div class="mt-1 w-4 text-text">
+        <MdDoNotDisturbAlt />
+      </div>
+      {/if}
+    </div>
     <select
       class="block w-full mt-1 rounded-md shadow-lg pl-3 pt-1 pb-1 text-black"
       bind:value
       on:change
+      {disabled}
     >
       {#each options as option}
         <option>{option}</option>

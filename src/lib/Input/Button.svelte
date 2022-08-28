@@ -29,6 +29,11 @@
   * number
   * default: 0
   * if greater than 0, the text will be displayed typewriter style
+  
+  **disabled**
+  * boolean
+  * default: false
+  * disables the button
  -->
 <script lang="ts">
   import Text from '$lib/Wrapper/Text.svelte';
@@ -61,17 +66,21 @@
   export let additionalClasses = '';
   export let size: 'small' | 'medium' | 'large' = 'medium';
   export let text: string = '';
+  export let disabled = false;
 </script>
 
 <label class="block">
   <button
+    type="button"
     on:click
     class="block w-full {additionalClasses} bg-{bgColor} hover:bg-opacity-90 hover:scale-101 active:scale-99 duration-100"
+    class:opacity-50={disabled}
     class:py-7={size === 'large'}
     class:py-3={size === 'medium'}
     class:text-4xl={size === 'large'}
     class:text-xl={size === 'medium'}
     class:text-sm={size === 'small'}
+    {disabled}
   >
     <div class="flex flex-row justify-center">
       <Text {text} {textColor} {typewriterSpeed} />

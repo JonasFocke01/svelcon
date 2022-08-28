@@ -31,6 +31,11 @@
   * default: false
   * sets the field to disabled/readonly
 
+  **showDisabledIcon**
+  * boolean
+  * default: false
+  * shows a disabled icon if the field is disabled
+
   **on:change**
   * function
   * default: () => {}
@@ -38,6 +43,7 @@
  -->
 <script lang="ts">
   import Text from '$lib/Wrapper/Text.svelte';
+  import MdDoNotDisturbAlt from 'svelte-icons/md/MdDoNotDisturbAlt.svelte';
 
   export let placeholder: string = '0';
   export let label: string = 'Label';
@@ -45,6 +51,7 @@
   export let max = 1024;
   export let value = 0;
   export let disabled = false;
+  export let showDisabledIcon = false;
 
   $: {
     if (min >= max) {
@@ -60,7 +67,14 @@
 </script>
 
 <div class="block">
-  <Text text={disabled ? `#${label}#` : `${label}`} />
+  <div class="flex flex-row">
+    <Text text={label} />
+    {#if disabled && showDisabledIcon}
+      <div class="mt-1 w-4 text-text">
+        <MdDoNotDisturbAlt />
+      </div>
+    {/if}
+  </div>
   <input
     type="number"
     class="block w-full rounded-md shadow-sm pl-3 pt-1 pb-1 text-black"
